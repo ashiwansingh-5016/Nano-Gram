@@ -1,0 +1,93 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 244px; /* Desktop standard (often up to 336 on wider displays) */
+  height: 100vh;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 20px;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.logoContainer {
+  padding: 25px 12px 35px;
+  cursor: pointer;
+}
+
+.logoText {
+  font-family: 'Condiment', cursive;
+  font-size: 32px;
+  color: #262626;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #262626;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navItem span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.active span {
+  font-weight: 700;
+}
+
+.navAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #dbdbdb;
+  border: 1px solid #262626;
+}
+
+.moreMenu {
+  margin-top: auto;
+}
+
+/* On smaller screens (e.g., tablet size), shrink sidebar to icons only */
+@media (max-width: 1264px) {
+  .sidebar {
+    width: 72px;
+  }
+  .logoText {
+    display: none;
+  }
+  /* Show a small logo icon instead perhaps, or just hide */
+  .logoContainer {
+    padding-bottom: 45px;
+  }
+  .navItem span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile approach: bottom bar, but we are copying desktop layout mainly right now */
+  .sidebar {
+    width: 72px;
+  }
+}

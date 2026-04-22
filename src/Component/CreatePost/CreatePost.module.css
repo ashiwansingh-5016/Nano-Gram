@@ -1,0 +1,107 @@
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  flex: 1;
+  text-align: center;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #262626;
+  padding: 0;
+  line-height: 1;
+}
+
+.formContainer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputBlock label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.input {
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.previewBox {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+}
+
+.previewBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.submitBtn {
+  background-color: #0095f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.submitBtn:hover {
+  background-color: #1877f2;
+}

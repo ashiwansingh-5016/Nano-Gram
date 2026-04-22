@@ -1,0 +1,101 @@
+.profileContainer {
+  max-width: 935px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px 0;
+  box-sizing: border-box;
+}
+
+.profileHeader {
+  display: flex;
+  margin-bottom: 44px;
+}
+
+.avatarLarge {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #efefef;
+  border: 1px solid #dbdbdb;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 0 0 20px;
+  color: #262626;
+}
+
+.stats {
+  font-size: 16px;
+  color: #262626;
+}
+
+.gridDivider {
+  border-top: 1px solid #dbdbdb;
+  margin-bottom: 20px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.gridItem {
+  position: relative;
+  aspect-ratio: 1;
+  background-color: #efefef;
+  cursor: pointer;
+}
+
+.gridImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gridOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.gridItem:hover .gridOverlay {
+  opacity: 1;
+}
+
+.noPostsMessage {
+  grid-column: span 3;
+  text-align: center;
+  padding: 40px;
+  color: #8e8e8e;
+  font-size: 16px;
+}
+
+@media (max-width: 735px) {
+  .avatarLarge {
+    width: 77px;
+    height: 77px;
+    margin-right: 28px;
+  }
+  .gridContainer {
+    gap: 3px;
+  }
+}

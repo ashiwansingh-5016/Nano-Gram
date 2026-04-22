@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useAppContext } from '../../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import logo from '../login_asset/Logo.webp';
 
 const Login = () => {
+  const { loginUser } = useAppContext();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -23,7 +27,9 @@ const Login = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       if (userData.password === password) {
-        setSuccess('Successfully logged in!');
+        setSuccess('Successfully logged in! Welcome back, ' + username + '.');
+        loginUser(username);
+        navigate('/home');
       } else {
         setError('Incorrect password. Please try again.');
       }
@@ -33,7 +39,9 @@ const Login = () => {
         `user_${username}`,
         JSON.stringify({ username, password })
       );
-      setSuccess('Account created and logged in!');
+      setSuccess('Account created successfully! You can now log in.');
+      loginUser(username);
+      navigate('/home');
     }
   };
 
