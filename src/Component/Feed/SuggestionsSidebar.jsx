@@ -1,9 +1,10 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import styles from './SuggestionsSidebar.module.css';
 
 const SuggestionsSidebar = () => {
   const { currentUser } = useAppContext();
+  const navigate = useNavigate();
 
   const suggestions = [
     { id: 1, name: 'Hardika & Nirmeet', label: 'Followed by kanishqofficial' },
@@ -18,13 +19,13 @@ const SuggestionsSidebar = () => {
   return (
     <div className={styles.container}>
       {/* Current User Switcher */}
-      <div className={styles.userSection}>
-        <div className={styles.avatarBig}></div>
+      <div className={styles.userSection} onClick={() => navigate('/profile')}>
+        <img src={`https://i.pravatar.cc/150?u=${currentUser.username}`} alt="avatar" className={styles.avatarBig} />
         <div className={styles.userInfo}>
            <span className={styles.username}>{currentUser.username}</span>
            <span className={styles.userSubtitle}>{currentUser.username.replace('_', ' ')}</span>
         </div>
-        <button className={styles.switchBtn}>Switch</button>
+        <button className={styles.switchBtn}>Visit</button>
       </div>
 
       <div className={styles.suggestionsHeader}>
@@ -35,7 +36,7 @@ const SuggestionsSidebar = () => {
       <div className={styles.suggestionsList}>
         {suggestions.map(s => (
           <div key={s.id} className={styles.suggestItem}>
-            <div className={styles.avatarSmall}></div>
+            <img src={`https://i.pravatar.cc/150?u=${s.name}`} alt="avatar" className={styles.avatarSmall} />
             <div className={styles.userInfo}>
               <span className={styles.suggestName}>{s.name}</span>
               <span className={styles.suggestLabel}>{s.label}</span>
