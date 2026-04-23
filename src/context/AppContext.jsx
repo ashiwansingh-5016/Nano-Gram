@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AppContext = createContext();
 
@@ -18,32 +18,6 @@ export const AppProvider = ({ children }) => {
 
   const [loadingMore, setLoadingMore] = useState(false);
 
-  const fetchMorePosts = useCallback(async () => {
-    if (loadingMore) return;
-    setLoadingMore(true);
-
-    try {
-      // Create a small artificial delay
-      await new Promise(r => setTimeout(r, 600));
-
-      const newPosts = Array.from({ length: 3 }).map(() => ({
-        id: `mock_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        imageUrl: `https://picsum.photos/seed/${Math.random()}/500/500`, // Random generic image
-        username: `user_${Math.floor(Math.random() * 9999)}`,
-        caption: 'Enjoying the moments ✨ #nano-gram',
-        likes: Math.floor(Math.random() * 300),
-        timestamp: new Date().toISOString(),
-        likedBy: [],
-      }));
-      
-      setPosts(prevPosts => [...prevPosts, ...newPosts]);
-    } catch (err) {
-      console.error('Failed to load more posts', err);
-    } finally {
-      setLoadingMore(false);
-    }
-  }, [loadingMore]);
-
   // Automatically save posts to local storage when they change
   useEffect(() => {
     localStorage.setItem('nanogram_posts', JSON.stringify(posts));
@@ -54,7 +28,7 @@ export const AppProvider = ({ children }) => {
     if (posts.length === 0) {
       fetchMorePosts();
     }
-  }, [posts.length, fetchMorePosts]);
+  }, []);
 
   const loginUser = (username) => {
     const user = { username, id: Date.now() };
@@ -101,6 +75,32 @@ export const AppProvider = ({ children }) => {
       }
       return post;
     }));
+  };
+
+  const fetchMorePosts = async () => {
+    if (loadingMore) return;
+    setLoadingMore(true);
+
+    try {
+      // Create a small artificial delay
+      await new Promise(r => setTimeout(r, 600));
+
+      const newPosts = Array.from({ length: 3 }).map(() => ({
+        id: `mock_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        imageUrl: `https://picsum.photos/seed/${Math.random()}/500/500`, // Random generic image
+        username: `user_${Math.floor(Math.random() * 9999)}`,
+        caption: 'Enjoying the moments ✨ #nano-gram',
+        likes: Math.floor(Math.random() * 300),
+        timestamp: new Date().toISOString(),
+        likedBy: [],
+      }));
+      
+      setPosts(prevPosts => [...prevPosts, ...newPosts]);
+    } catch (err) {
+      console.error('Failed to load more posts', err);
+    } finally {
+      setLoadingMore(false);
+    }
   };
 
   const value = {
