@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Explore.module.css';
 
 const Explore = () => {
@@ -6,7 +6,7 @@ const Explore = () => {
   const [loading, setLoading] = useState(false);
   const sentinelRef = useRef(null);
 
-  const fetchExploreItems = async () => {
+  const fetchExploreItems = useCallback(async () => {
     if (loading) return;
     setLoading(true);
 
@@ -27,11 +27,11 @@ const Explore = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [loading]);
 
   useEffect(() => {
     fetchExploreItems();
-  }, []);
+  }, [fetchExploreItems]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,7 +48,7 @@ const Explore = () => {
     }
 
     return () => observer.disconnect();
-  }, [loading]);
+  }, [loading, fetchExploreItems]);
 
   return (
     <div className={styles.exploreContainer}>

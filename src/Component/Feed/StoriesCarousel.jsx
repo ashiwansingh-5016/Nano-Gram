@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './StoriesCarousel.module.css';
-import { useAppContext } from '../../context/AppContext';
 
 const StoriesCarousel = () => {
-  const { currentUser } = useAppContext();
 
   // Generate some fake stories users based on current user
   const stories = [
