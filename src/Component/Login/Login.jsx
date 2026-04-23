@@ -9,11 +9,16 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
 
     if (!username.trim() || !password.trim()) {
+      setError('Please fill in all fields.');
       return;
     }
     
@@ -22,8 +27,11 @@ const Login = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       if (userData.password === password) {
+        setSuccess('Successfully logged in! Welcome back, ' + username + '.');
         loginUser(username);
         navigate('/home');
+      } else {
+        setError('Incorrect password. Please try again.');
       }
     } else {
       // Mock flow: if not found, create one automatically to satisfy previous requirement
@@ -31,6 +39,7 @@ const Login = () => {
         `user_${username}`,
         JSON.stringify({ username, password })
       );
+      setSuccess('Account created successfully! You can now log in.');
       loginUser(username);
       navigate('/home');
     }
