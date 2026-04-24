@@ -4,6 +4,7 @@ import { useAppContext } from './context/AppContext';
 import Login from './Component/Login/Login';
 import Feed from './Component/Feed/Feed';
 import Profile from './Component/Profile/Profile';
+import Explore from './Component/Explore/Explore';
 import Sidebar from './Component/Sidebar/Sidebar';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/login" element={!currentUser ? <Login /> : <Navigate to="/home" />} />
           <Route path="/home" element={currentUser ? <Feed /> : <Navigate to="/login" />} />
+          <Route path="/explore" element={currentUser ? <Explore /> : <Navigate to="/login" />} />
           <Route path="/profile" element={currentUser ? <Profile /> : <Navigate to="/login" />} />
           <Route path="*" element={<Navigate to={currentUser ? '/home' : '/login'} />} />
         </Routes>

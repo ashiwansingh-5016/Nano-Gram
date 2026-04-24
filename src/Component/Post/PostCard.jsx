@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <div className={styles.avatar}></div>
+        <img src={`https://i.pravatar.cc/150?u=${post.username}`} alt="avatar" className={styles.avatar} />
         <div className={styles.headerText}>
           <span className={styles.username}>{post.username} <span className={styles.timeLabel}>• 1h</span></span>
           <span className={styles.subtext}>Original audio</span>

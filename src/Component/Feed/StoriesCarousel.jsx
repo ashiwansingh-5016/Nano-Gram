@@ -21,10 +21,8 @@ const StoriesCarousel = () => {
       {stories.map(story => (
         <div key={story.id} className={styles.storyItem}>
           <div className={`${styles.avatarRing} ${story.isUser ? styles.grayRing : ''}`}>
-             <div className={styles.avatar}>
-               {/* Use plus sign if it's the user's empty story */}
-               {story.isUser && <div className={styles.addIcon}>+</div>}
-             </div>
+             <img src={`https://i.pravatar.cc/150?u=${story.text}`} alt="story" className={styles.avatar} />
+             {story.isUser && <div className={styles.addIcon}>+</div>}
           </div>
           <span className={styles.storyText}>{story.text}</span>
         </div>
