@@ -12,6 +12,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  const [isLoginView, setIsLoginView] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
@@ -21,27 +23,36 @@ const Login = () => {
       setError('Please fill in all fields.');
       return;
     }
-    
-    // Always treat as login for visual mockup as per design
+
     const storedUser = localStorage.getItem(`user_${username}`);
-    if (storedUser) {
-      const userData = JSON.parse(storedUser);
-      if (userData.password === password) {
-        setSuccess('Successfully logged in! Welcome back, ' + username + '.');
-        loginUser(username);
-        navigate('/home');
+
+    if (isLoginView) {
+      // Login Logic
+      if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        if (userData.password === password) {
+          setSuccess('Successfully logged in!');
+          loginUser(username);
+          navigate('/home');
+        } else {
+          setError('Incorrect password. Please try again.');
+        }
       } else {
-        setError('Incorrect password. Please try again.');
+        setError('User not found. Please sign up first.');
       }
     } else {
-      // Mock flow: if not found, create one automatically to satisfy previous requirement
-      localStorage.setItem(
-        `user_${username}`,
-        JSON.stringify({ username, password })
-      );
-      setSuccess('Account created successfully! You can now log in.');
-      loginUser(username);
-      navigate('/home');
+      // Sign Up Logic
+      if (storedUser) {
+        setError('Username already taken. Please choose another.');
+      } else {
+        const newUser = { username, password };
+        localStorage.setItem(`user_${username}`, JSON.stringify(newUser));
+        setSuccess('Account created! Logging you in...');
+        setTimeout(() => {
+          loginUser(username);
+          navigate('/home');
+        }, 1000);
+      }
     }
   };
 
@@ -51,8 +62,6 @@ const Login = () => {
         
         {/* Left Side: Visual Preview / Text Area */}
         <div className={styles.previewSection}>
-
-
           <div className={styles.headingText}>
             See everyday moments from your<br/>
             <span className={styles.gradientRed}>close</span> <span className={styles.gradientPink}>friends</span>.
@@ -70,7 +79,9 @@ const Login = () => {
         {/* Right Side: Login Form */}
         <div className={styles.formSection}>
           <div className={styles.formCard}>
-            <h2 className={styles.formTitle}>Log into Nano-Gram</h2>
+            <h2 className={styles.formTitle}>
+              {isLoginView ? 'Log into Nano-Gram' : 'Create Account'}
+            </h2>
 
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.inputGroup}>
@@ -82,7 +93,7 @@ const Login = () => {
                   onChange={(e) => setUsername(e.target.value)}
                   autoComplete="off"
                 />
-                <label className={styles.floatingLabel}>Phone number, username, or email</label>
+                <label className={styles.floatingLabel}>Username</label>
               </div>
               <div className={styles.inputGroup}>
                 <input
@@ -96,22 +107,29 @@ const Login = () => {
                 <label className={styles.floatingLabel}>Password</label>
               </div>
 
+              {error && <div className={styles.errorMessage}>{error}</div>}
+              {success && <div className={styles.successMessage}>{success}</div>}
+
               <button type="submit" className={styles.submitButton}>
-                Log in
+                {isLoginView ? 'Log in' : 'Sign up'}
               </button>
             </form>
 
-            <a href="#" className={styles.forgotPassword}>
-              Forgot password?
-            </a>
+            <div className={styles.divider}>
+              <span>OR</span>
+            </div>
 
-
-            <button type="button" className={styles.outlineButton}>
-               Create new account
+            <button 
+              type="button" 
+              className={styles.outlineButton}
+              onClick={() => {
+                setIsLoginView(!isLoginView);
+                setError('');
+                setSuccess('');
+              }}
+            >
+               {isLoginView ? 'Create new account' : 'Back to Login'}
             </button>
-
-
-
           </div>
         </div>
       </div>
