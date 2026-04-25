@@ -1,0 +1,392 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 244px; /* Desktop standard (often up to 336 on wider displays) */
+  height: 100vh;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  transition: width 0.3s ease;
+}
+
+.logoContainer {
+  padding: 25px 12px 35px;
+  cursor: pointer;
+}
+
+.logoText {
+  font-family: 'Condiment', cursive;
+  font-size: 32px;
+  color: #262626;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #262626;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navItem span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.active span {
+  font-weight: 700;
+}
+
+.navAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #dbdbdb;
+  border: 1px solid #262626;
+  object-fit: cover;
+}
+
+.moreMenu {
+  margin-top: auto;
+}
+
+/* Sidebar Override states for when search is active */
+.sidebarNarrow {
+  width: 72px;
+}
+
+.sidebarNarrow .logoText {
+  display: none;
+}
+
+.logoIcon {
+  color: #262626;
+  margin-left: 4px;
+}
+
+.logoIconImage {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.sidebarNarrow .navItem span {
+  display: none;
+}
+
+/* Slide Out Search Drawer */
+.searchDrawer {
+  position: fixed;
+  top: 0;
+  left: 72px; /* Anchor it right next to the narrow sidebar */
+  width: 397px;
+  height: 100vh;
+  background-color: #fafafa;
+  border-right: 1px solid #dbdbdb;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 99; /* Must sit below the main sidebar z-index 100 */
+}
+
+.searchDrawerOpen {
+  transform: translateX(0);
+}
+
+.searchHeader {
+  padding: 24px 24px 36px;
+}
+
+.searchHeader h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0;
+}
+
+.searchInputContainer {
+  margin: 0 24px 24px;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  background-color: #efefef;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 32px 10px 16px;
+  box-sizing: border-box;
+  color: #262626;
+  outline: none;
+  font-size: 14px;
+}
+
+.clearSearchBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #c7c7c7;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.searchResultsContainer {
+  border-top: 1px solid #dbdbdb;
+  padding: 16px 24px;
+}
+
+.recentHeader {
+  margin-bottom: 16px;
+}
+
+.recentHeader h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0;
+}
+
+.noSearchText {
+  text-align: center;
+  color: #8e8e8e;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+/* Notifications Drawer */
+.notifDrawer {
+  position: fixed;
+  top: 0;
+  left: 72px;
+  width: 397px;
+  height: 100vh;
+  background-color: #fafafa;
+  border-right: 1px solid #dbdbdb;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 98; 
+  display: flex;
+  flex-direction: column;
+}
+
+.notifDrawerOpen {
+  transform: translateX(0);
+}
+
+.notifHeader {
+  padding: 24px 24px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifHeader h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #262626;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #262626;
+}
+
+.filterBar {
+  padding: 12px 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.filterChip {
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #262626;
+}
+
+.activeChip {
+  background-color: #262626;
+  color: #fff;
+  border-color: #262626;
+}
+
+.notifList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px 24px;
+}
+
+.timeGroup h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #262626;
+  margin: 24px 0 16px;
+}
+
+.notifItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarGroup {
+  display: flex;
+  position: relative;
+}
+
+.notifText {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #262626;
+}
+
+.time {
+  color: #8e8e8e;
+  margin-left: 4px;
+}
+
+.postThumbnail {
+  width: 40px;
+  height: 40px;
+  background-color: #efefef;
+  border-radius: 4px;
+  background-image: url('https://picsum.photos/40/40');
+  background-size: cover;
+}
+
+.followBtn {
+  padding: 7px 16px;
+  background-color: #0095f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.followBtn:hover {
+  background-color: #1877f2;
+}
+
+.activeNavItem {
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* Create Dropdown Styles */
+.navItem {
+  position: relative;
+}
+
+.createDropdown {
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  width: 200px;
+  background-color: #262626; /* Dark theme to match screenshot */
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 110;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #363636;
+}
+
+.dropdownItem span {
+  font-weight: 500;
+}
+
+
+/* On smaller screens (e.g., tablet size), shrink sidebar to icons only */
+@media (max-width: 1264px) {
+  .sidebar {
+    width: 72px;
+  }
+  .logoText {
+    display: none;
+  }
+  /* Show a small logo icon instead perhaps, or just hide */
+  .logoContainer {
+    padding-bottom: 45px;
+  }
+  .navItem span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile approach: bottom bar, but we are copying desktop layout mainly right now */
+  .sidebar {
+    width: 72px;
+  }
+}
