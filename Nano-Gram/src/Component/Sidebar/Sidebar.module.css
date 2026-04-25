@@ -2,20 +2,16 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 244px;
+  width: 244px; /* Desktop standard (often up to 336 on wider displays) */
   height: 100vh;
   border-right: 1px solid #dbdbdb;
-  background-color: #ffffff;
+  background-color: #fafafa;
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 12px 12px 20px;
   box-sizing: border-box;
   z-index: 100;
-<<<<<<< HEAD
-  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
-=======
   transition: width 0.3s ease;
->>>>>>> upstream/main
 }
 
 .logoContainer {
@@ -23,6 +19,11 @@
   cursor: pointer;
 }
 
+.logoText {
+  font-family: 'Condiment', cursive;
+  font-size: 32px;
+  color: #262626;
+}
 
 .navMenu {
   display: flex;
@@ -40,34 +41,16 @@
   cursor: pointer;
   color: #262626;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
-  flex-shrink: 0;
-}
-
-.navItem svg, 
-.navItem img {
-  flex-shrink: 0;
-  min-width: 24px;
-  min-height: 24px;
+  transition: background-color 0.2s ease;
 }
 
 .navItem:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.navItem:active {
-  transform: scale(0.96);
-  opacity: 0.7;
-}
-
 .navItem span {
   font-size: 16px;
   font-weight: 400;
-  white-space: nowrap;
-  opacity: 1;
-  max-width: 200px;
-  overflow: hidden;
-  transition: opacity 0.2s ease, max-width 0.3s cubic-bezier(0.2, 0, 0, 1), transform 0.2s ease;
 }
 
 .active span {
@@ -92,26 +75,8 @@
   width: 72px;
 }
 
-<<<<<<< HEAD
-.logoText {
-  font-family: 'Condiment', cursive;
-  font-size: 32px;
-  color: #262626;
-  white-space: nowrap;
-  opacity: 1;
-  max-width: 200px;
-  transition: opacity 0.2s ease, max-width 0.3s cubic-bezier(0.2, 0, 0, 1);
-}
-
-.sidebarNarrow .logoText {
-  opacity: 0;
-  max-width: 0;
-  pointer-events: none;
-  overflow: hidden;
-=======
 .sidebarNarrow .logoText {
   display: none;
->>>>>>> upstream/main
 }
 
 .logoIcon {
@@ -126,33 +91,8 @@
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
-.sidebarNarrow .navItem {
-  justify-content: center;
-  gap: 0;
-  padding: 12px 0;
-}
-
-.sidebarNarrow .logoIconImage {
-  margin-right: 0;
-}
-
-.sidebarNarrow .logoContainer {
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.sidebarNarrow .navItem span {
-  opacity: 0;
-  max-width: 0;
-  margin: 0;
-  pointer-events: none;
-=======
 .sidebarNarrow .navItem span {
   display: none;
->>>>>>> upstream/main
 }
 
 /* Slide Out Search Drawer */
@@ -449,10 +389,4 @@
   .sidebar {
     width: 72px;
   }
-}
-
-.navIconImage {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
 }

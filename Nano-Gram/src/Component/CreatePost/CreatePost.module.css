@@ -1,0 +1,178 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.closeScreenBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.modal {
+  width: 50vw;
+  max-width: 800px;
+  min-height: 50vh;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.header {
+  padding: 10px 16px;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 42px;
+}
+
+.header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0;
+}
+
+.backBtn {
+  position: absolute;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.shareBtn {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #0095f6;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.shareBtn:hover {
+  color: #00376b;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadStage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.iconContainer {
+  margin-bottom: 20px;
+  color: #262626;
+}
+
+.dragText {
+  font-size: 20px;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.selectBtn {
+  background-color: #0095f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.selectBtn:hover {
+  background-color: #1877f2;
+}
+
+/* Details Stage Layout */
+.detailsStage {
+  display: flex;
+  height: 100%;
+  flex: 1;
+}
+
+.previewContainer {
+  flex: 1.5;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #dbdbdb;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.formContainer {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.miniAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #dbdbdb;
+  background-image: url('https://i.pravatar.cc/100');
+  background-size: cover;
+}
+
+.captionInput {
+  flex: 1;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  color: #262626;
+  outline: none;
+  font-family: inherit;
+}
