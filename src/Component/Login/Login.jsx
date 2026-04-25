@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
-import logo from '../login_asset/Logo.webp';
+import logo from '../Login_asset/Logo.webp';
 
 const Login = () => {
   const { loginUser } = useAppContext();

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import CreatePost from '../CreatePost/CreatePost';
-import appIcon from '../login_asset/letter-n.png';
+import appIcon from '../Login_asset/letter-n.png';
 import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
